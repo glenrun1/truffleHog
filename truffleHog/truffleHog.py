@@ -237,8 +237,7 @@ def regex_check(printableDiff, commit_time, branch_name, prev_commit, blob, comm
             foundRegex['commit'] = prev_commit.message
             # Do NOT dump diff and printDiff to file, most time it is not used.
             foundRegex['diff'] = 'faked diff'
-            """ Truncate string that is too long, which may be over 30M
-            """
+            #Truncate string that is too long, which may be over 30M
             if len(found_strings) > 16:
                 foundRegex['stringsFound'] = found_strings[:16]
             else:
@@ -249,6 +248,7 @@ def regex_check(printableDiff, commit_time, branch_name, prev_commit, blob, comm
             foundRegex['printDiff'] = 'faked printDiff'
             foundRegex['reason'] = key
             foundRegex['commitHash'] = prev_commit.hexsha
+            foundRegex['currentHash'] = commitHash 
             regex_matches.append(foundRegex)
     return regex_matches
 
